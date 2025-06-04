@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.login_demo.dto.LoginRequest;
+import com.example.login_demo.dto.LoginResponse;
 import com.example.login_demo.service.UserService;
 
 @RestController
@@ -19,9 +20,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        boolean success = userService.login(request.getUsername(), request.getPassword());
-        if (success) {
-            return ResponseEntity.ok().body("登录成功");
+        LoginResponse response = userService.login(request.getUsername(), request.getPassword());
+        if (response != null) {
+            return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(401).body("用户名或密码错误");
         }
