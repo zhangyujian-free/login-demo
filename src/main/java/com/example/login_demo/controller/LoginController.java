@@ -33,12 +33,7 @@ public class LoginController {
 
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(HttpSession session) {
-        LoginResponse response = (LoginResponse) session.getAttribute("loggedInUser");
-        if (response != null) {
-            return ResponseEntity.ok("当前用户：" + response.getUsername());
-        } else {
-            return ResponseEntity.status(401).body("未登录");
-        }
+        return ResponseEntity.status(401).body("未登录");
     }
 
     @PostMapping("/logout")
