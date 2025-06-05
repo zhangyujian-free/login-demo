@@ -1,8 +1,10 @@
-package com.example.login_demo;
+package com.example.login_demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.example.login_demo.util.LoginInterceptor;
 
 @Configuration  // 标记为配置类
 public class WebConfig implements WebMvcConfigurer {

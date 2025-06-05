@@ -43,4 +43,13 @@ public class LoginController {
         return ResponseEntity.ok("已退出登录");
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody LoginRequest request) {
+        boolean success = userService.register(request.getUsername(), request.getPassword());
+        if (success)
+            return ResponseEntity.ok("注册成功");
+        else
+            return ResponseEntity.badRequest().body("用户名已存在");
+    }
+
 }
